@@ -3,7 +3,8 @@ import Featured from "../../components/featured/Featured"
 import Navbar from "../../components/navbar/Navbar"
 import Sidebar from "../../components/sidebar/Sidebar"
 import Widgets from "../../components/widgets/Widgets"
-import "./home.scss"
+import List from "../../components/table/Table";
+import "./home.scss";
 
 const Home = () => {
   return (
@@ -12,18 +13,22 @@ const Home = () => {
       <div className="homeContainer">
         <Navbar />
         <div className="widgets">
-          <Widgets type="user"/>
-          <Widgets type="order"/>
-          <Widgets type="earning"/>
-          <Widgets type="balance"/>
+          <Widgets type="user" />
+          <Widgets type="order" />
+          <Widgets type="earning" />
+          <Widgets type="balance" />
         </div>
         <div className="charts">
           <Featured />
-          <Chart />
+          <Chart title="Last 6 Months (Revenue)" aspect={2 / 1} />
         </div>
+        <div className="listContainer">
+          <div className="listTitle">Latest Transactions</div>
+          <List />
+        </div>
+      </div>
     </div>
-    </div>
-  )
-}
+  );
+};
 
 export default Home

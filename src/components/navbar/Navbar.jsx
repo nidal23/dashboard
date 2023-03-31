@@ -2,15 +2,16 @@ import "./navbar.scss";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import FullscreenExitOutlinedIcon from "@mui/icons-material/FullscreenExitOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
-
-
+import { useContext } from "react";
+import { DarkModeContext } from "../../context/darkModeContext";
 
 const Navbar = () => {
-
+  const { darkMode, dispatch } = useContext(DarkModeContext);
 
   return (
     <div className="navbar">
@@ -24,10 +25,15 @@ const Navbar = () => {
             <LanguageOutlinedIcon className="icon" />
             English
           </div>
-          <div className="item">
-            <DarkModeOutlinedIcon
-              className="icon"
-            />
+          <div className="item" onClick={() => dispatch({ type: "TOGGLE" })}>
+            {darkMode ? (
+              <LightModeOutlinedIcon
+                className="icon"
+                style={{ color: "gray" }}
+              />
+            ) : (
+              <DarkModeOutlinedIcon className="icon" />
+            )}
           </div>
           <div className="item">
             <FullscreenExitOutlinedIcon className="icon" />
@@ -44,7 +50,11 @@ const Navbar = () => {
             <ListOutlinedIcon className="icon" />
           </div>
           <div className="item">
-            <img src="https://images.unsplash.com/photo-1546776310-eef45dd6d63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cm9ib3R8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" alt="" className="avatar"/>
+            <img
+              src="https://images.unsplash.com/photo-1546776310-eef45dd6d63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cm9ib3R8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
+              alt=""
+              className="avatar"
+            />
           </div>
         </div>
       </div>
